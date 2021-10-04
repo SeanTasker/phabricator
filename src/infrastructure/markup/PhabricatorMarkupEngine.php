@@ -455,6 +455,8 @@ final class PhabricatorMarkupEngine extends Phobject {
       'pygments'      => PhabricatorEnv::getEnvConfig('pygments.enabled'),
       'youtube'       => PhabricatorEnv::getEnvConfig(
         'remarkup.enable-embedded-youtube'),
+      'driveembed'    => PhabricatorEnv::getEnvConfig(
+        'remarkup.enable-embedded-drivedocs'),
       'differential.diff' => null,
       'header.generate-toc' => false,
       'macros'        => true,
@@ -517,6 +519,10 @@ final class PhabricatorMarkupEngine extends Phobject {
       $rules[] = new PhabricatorYoutubeRemarkupRule();
     }
 
+    if ($options['driveembed']) {
+      $rules[] = new PhabricatorDriveEmbedRemarkupRule();
+    }
+  
     $rules[] = new PhabricatorIconRemarkupRule();
     $rules[] = new PhabricatorEmojiRemarkupRule();
     $rules[] = new PhabricatorHandleRemarkupRule();

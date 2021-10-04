@@ -237,6 +237,22 @@ EOTEXT
             "inline. This has mild security implications (you'll leak ".
             "referrers to YouTube) and is pretty silly (but sort of ".
             "awesome).")),
+        $this->newOption('remarkup.enable-embedded-drivedocs', 'bool', false)
+        ->setBoolOptions(
+            array(
+            pht('Embed Drive docs'),
+            pht("Don't embed Drive docs"),
+            ))
+        ->setSummary(
+            pht('Determines whether or not Drive documents get embedded.'))
+        ->setDescription(
+            pht(
+            "If you enable this, linked documents will be embedded ".
+            "inline. This has mild security implications (you'll leak ".
+            "referrers to drive). Docs, Sheets and Forms are supported. ".
+            "The document needs to be 'Published' and the URL be the ".
+            "publish URL not a share link."
+        )),
         $this->newOption(
           'security.outbound-blacklist',
           'list<string>',
